@@ -51,7 +51,7 @@ public class Employee {
 		if (firstName == null || lastName == null || description == null || firstName.trim().isEmpty() || lastName.trim().isEmpty() || description.trim().isEmpty() || jobYears < 0) {
 			return false;
 		}
-		if (email == null || email.trim().isEmpty()) {
+		if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.contains(".")) {
 			return false;
 		}
 		return true;
@@ -131,7 +131,7 @@ public class Employee {
 	}
 
 	public void setEmail(String email) {
-		if (email == null || email.trim().isEmpty()) {
+		if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.contains(".")) {
 			throw new IllegalArgumentException("Invalid email");
 		} else {
 			this.email = email;

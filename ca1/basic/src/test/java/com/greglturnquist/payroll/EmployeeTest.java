@@ -295,4 +295,44 @@ class EmployeeTest {
 //        Act + Assert
         assertThrows(IllegalArgumentException.class, () -> employee.setEmail(email));
     }
+
+    @Test
+    void testEmployeeSetInvalidEmail() {
+//        Arrange
+        String email = "emailemail.com";
+//        Act + Assert
+        assertThrows(IllegalArgumentException.class, () -> employee.setEmail(email));
+    }
+
+    @Test
+    void testEmployeeSetInvalidEmailSecondTest() {
+//        Arrange
+        String email = "email@com";
+//        Act + Assert
+        assertThrows(IllegalArgumentException.class, () -> employee.setEmail(email));
+    }
+
+    @Test
+    void testCreateEmployeeWithInvalidEmail() {
+//         Arrange
+        String firstName = "Frodo";
+        String lastName = "Baggins";
+        String description = "ring bearer";
+        int jobYears = 1;
+        String email = "emailemail.com";
+//         Act + Assert
+        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
+    }
+
+    @Test
+    void testCreateEmployeeWithInvalidEmailSecondTest() {
+//         Arrange
+        String firstName = "Frodo";
+        String lastName = "Baggins";
+        String description = "ring bearer";
+        int jobYears = 1;
+        String email = "email@com";
+//         Act + Assert
+        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
+    }
 }
