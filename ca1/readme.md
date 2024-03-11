@@ -530,7 +530,7 @@ If needed, you can view the changes made to the files by running the following c
 ./mvnw spring-boot:run
 ```
 
-3. In a browser, navigate to [here](http://localhost:8080/employees) to view the changes made to the application.
+3. In a browser, navigate [here](http://localhost:8080/employees) to view the changes made to the application.
 
 ## Commit the changes to the repository
 
