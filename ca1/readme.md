@@ -19,24 +19,99 @@ found [here](https://github.com/J2PCastro/devops-23-24-PSM-1231836).
 ## Table of Contents
 
 1. [Setup](#setup)
-2. [Adding Features](#adding-features)
+2. [Creating Issues](#creating-issues)
+3. [Getting Started](#getting-started)
+    1. [Create a local repository](#1-create-a-local-repository)
+    2. [Copy the Spring Boot application to the repository](#2-copy-the-spring-boot-application-to-the-repository)
+    3. [Add the files to the repository](#3-add-the-files-to-the-repository)
+    4. [Commit the files to the repository](#4-commit-the-files-to-the-repository)
+    5. [Push the repository to GitHub](#5-push-the-repository-to-github)
+    6. [Add a new tag](#6-add-a-new-tag)
+4. [Adding Features](#adding-features)
     1. [Part 1: Adding job years field](#part-1-adding-job-years-field)
+        1. [Commit the changes to the repository](#1-commit-the-changes-to-the-repository)
+        2. [Create a new tag for the new version](#2-create-a-new-tag-for-the-new-version)
+        3. [Create a new tag to mark the end of the first part of the assignment](#3-create-a-new-tag-to-mark-the-end-of-the-first-part-of-the-assignment)
     2. [Part 2:](#part-2)
-    3. [Part 2.1.: Adding a new feature to the application: email field](#21-adding-a-new-feature-to-the-application-email-field)
-    4. [Part 2.2.: Create a new branch for fixing bugs: fix-invalid-email](#22-create-a-new-branch-for-fixing-bugs-named-fix-invalid-email)
-3. [Alternative to Git: Mercurial](#alternative-to-git-mercurial)
-4. [Conclusion](#conclusion)
+        1. [2.1.: Adding a new feature to the application: email field](#21-adding-a-new-feature-to-the-application-email-field)
+            1. [Start by creating a new branch named email-field:](#1-start-by-creating-a-new-branch-named-email-field)
+            2. [Commit the changes to the repository](#2-commit-the-changes-to-the-repository)
+            3. [Merge the branch to the master branch](#3-merge-the-branch-to-the-master-branch)
+            4. [Create a new tag for the new version](#4-create-a-new-tag-for-the-new-version)
+        2. [2.2.: Bug fixes:](#22-bug-fixes)
+            1. [Start by creating a new branch named fix-invalid-email:](#1-start-by-creating-a-new-branch-named-fix-invalid-email)
+            2. [Commit the changes to the repository](#2-commit-the-changes-to-the-repository-1)
+            3. [Merge the branch to the master branch](#3-merge-the-branch-to-the-master-branch)
+            4. [Create a new tag for the new version](#4-create-a-new-tag-for-the-new-version)
+            5. [Create a new tag to mark the end of the second part of the assignment](#5-create-a-new-tag-to-mark-the-end-of-the-second-part-of-the-assignment)
+5. [Alternative to Git: Mercurial](#alternative-to-git-mercurial)
+    1. [Using Mercurial to the goals of this assignment](#using-mercurial-to-the-goals-of-this-assignment)
+        1. [Cloning a repository:](#1-cloning-a-repository)
+        2. [Initializing a new repository:](#2-initializing-a-new-repository)
+        3. [Add the files to the repository:](#3-add-the-files-to-the-repository)
+        4. [Commit the files to the repository:](#4-commit-the-files-to-the-repository)
+        5. [Push the repository to a remote location:](#5-push-the-repository-to-a-remote-location)
+        6. [Add a tag to the commit:](#6-add-a-tag-to-the-commit)
+        7. [Pushing tags:](#7-pushing-tags)
+        8. [Creating branches in Mercurial:](#8-creating-branches-in-mercurial)
+        9. [Switching branches:](#9-switching-branches)
+        10. [Merging branches:](#10-merging-branches)
+6. [Conclusion](#conclusion)
 
-## Setup
+# Setup
 
 The first step is to clone [this repository](https://github.com/spring-guides/tut-react-and-spring-data-rest) to your
 local machine. This repository contains a simple Spring Boot application that we will use to demonstrate the use of Git
 and GitHub.
+
+To do so, simply create an empty directory on your machine. You can do so by opening a terminal and using the following
+commands:
+
+```bash
+mkdir <directory-name>
+```
+
+Then, move into to the directory and clone the repository:
+
+```bash
+cd path/to/directory
+git clone <repository-url>
+```
+
+- This second command clones the repository to the local machine.
+
 The only directory needed for this assignment is the `basic` directory. The other directories are not needed.
 Issues should be created in GitHub to track the progress of the assignment. It is assumed that a remote repository as
 already been created in GitHub. If not, it should be created before proceeding.
 
-### 1: Create a local repository
+# Creating Issues
+
+To create issues in GitHub navigate to the repository in GitHub and click on the "Issues" tab.
+
+![Issues](./imageSources/issues.png)
+
+Then click on the "New issue" button. This will open a new page where you can create a new issue.
+
+![New Issue](./imageSources/new_issue.png)
+
+Give the issue a title and a description. You can also assign the issue to a specific person, add labels, and set a
+milestone. This is useful to keep track of the progress of the assignment.
+
+![Title & Description](./imageSources/title_description.png)
+
+Then click on the "Submit new issue" button. This will create a new issue in the repository.
+
+![Submit New Issue](./imageSources/submit_new_issue.png)
+
+The issue will be assigned a number, which can be used to reference the issue in the commit messages.
+
+![Issue Number](./imageSources/issue_number.png)
+
+Create as many issues as necessary to track the progress of the assignment.
+
+# Getting Started
+
+## 1: Create a local repository
 
 The first task is to create a local repository. This is done by navigating to a directory in your machine and creating
 an empty directory giving it a name, without any blank spaces, preferably in all lower case. After this open
@@ -49,7 +124,7 @@ git init
 - This command initializes a new Git repository in the directory. This creates a hidden directory named `.git` in the
   directory. This directory contains all the necessary files for the repository.
 
-### 2: Copy the Spring Boot application to the repository
+## 2: Copy the Spring Boot application to the repository
 
 The next task is to copy the Spring Boot application to the repository. This is done by copying the `basic` directory
 from the cloned repository to the local repository.
@@ -61,7 +136,7 @@ cp -r path/to/cloned/repository/basic path/to/local/repository
 - This command copies the `basic` directory from the cloned repository to the local repository.
 - The `-r` flag is used to copy directories and their contents recursively.
 
-### 3: Add the files to the repository
+## 3: Add the files to the repository
 
 The next task is to add the files to the repository. This is done by running the following commands:
 
@@ -73,7 +148,7 @@ git add .
   necessary before committing files to the repository.
 - The `.` is a wildcard that matches all files in the directory.
 
-### 4: Commit the files to the repository
+## 4: Commit the files to the repository
 
 The next task is to commit the files to the repository. This is done by running the following commands:
 
@@ -88,7 +163,7 @@ git commit -m "Initial commit. closes #1"
 - The `closes #1` is used to close the issue created in GitHub. This is a good practice to keep track of the progress of
   the assignment.
 
-### 5: Push the repository to GitHub
+## 5: Push the repository to GitHub
 
 Assuming a remote repository in GitHub is already created, the next task is to push the commit to GitHub. This is done
 by running the following commands:
@@ -105,7 +180,7 @@ git push -u origin master
   the default remote repository for the local repository. This means that in the future, the `git push` command can be
   used without specifying the remote repository and the branch to push to.
 
-### 6: Add a new tag
+## 6: Add a new tag
 
 The next task is to add a new tag to the repository. This is done by running the following commands:
 
@@ -120,419 +195,14 @@ git push origin v1.1.0
   in the tag.
 - The second command pushes the tag to the remote repository.
 
-## Adding Features
+# Adding Features
 
-### Part 1: Adding job years field
+## Part 1: Adding job years field
 
 This first part is developed in the master branch. The goal is to add a new field to the application which will be the
-number of years the user has been in the job.
-The steps are as follows:
+number of years the user has been in the job. The actual Java implementation code is not covered in this report.
 
-#### 1. Add the field to the `Employee` class.
-
-```java
-private int jobYears;
-```
-
-#### 2. Add the new field to the `Employee` class constructor.
-
-```java
-public Employee(String firstName, String lastName, String description, int jobYears) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.description = description;
-    this.jobYears = jobYears;
-}
-```
-
-#### 3. Add validation to the `Employee` class constructor so that the parameters are always valid.
-
-```java
-    public Employee(String firstName, String lastName, String description, int jobYears) {
-    if (!validateArguments(firstName, lastName, description, jobYears)) {
-        throw new IllegalArgumentException("Invalid arguments");
-    }
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.description = description;
-    this.jobYears = jobYears;
-}
-
-private boolean validateArguments(String firstName, String lastName, String description, int jobYears, String email) {
-    if (firstName == null || lastName == null || description == null || firstName.trim().isEmpty() || lastName.trim().isEmpty() || description.trim().isEmpty() || jobYears < 0) {
-        return false;
-    }
-    return true;
-}
-```
-
-#### 4. Add the new field to the `Employee` class `toString` method.
-
-```java
-
-@Override
-public String toString() {
-    return "Employee{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", description='" + description + '\'' +
-            ", jobYears=" + jobYears +
-            '}';
-}
-```
-
-#### 5. Add the new field to the `Employee` class `equals` and `hashCode` methods.
-
-```java
-
-@Override
-public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Employee employee = (Employee) o;
-    return jobYears == employee.jobYears && Objects.equals(id, employee.id) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(description, employee.description) && Objects.equals(email, employee.email);
-}
-
-@Override
-public int hashCode() {
-    return Objects.hash(id, firstName, lastName, description, jobYears, email);
-}
-```
-
-#### 6. Add the new field to the `Employee` class `get` and `set` methods.
-
-```java
-    public void setJobYears(int jobYears) {
-    if (jobYears < 0) {
-        throw new IllegalArgumentException("Invalid job years");
-    } else {
-        this.jobYears = jobYears;
-    }
-}
-```
-
-#### 7. Create an EmployeeTest class to test the new field to ensure it is working as expected.
-
-```java
-class EmployeeTest {
-
-    private Employee employee;
-
-    @BeforeEach
-    void setUp() {
-        String firstName = "Frodo";
-        String lastName = "Baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-        employee = new Employee(firstName, lastName, description, jobYears);
-    }
-
-    @Test
-    void testEmployee() {
-        assertEquals("Frodo", employee.getFirstName());
-        assertEquals("Baggins", employee.getLastName());
-        assertEquals("ring bearer", employee.getDescription());
-        assertEquals(1, employee.getJobYears());
-    }
-
-    @Test
-    void testEmployeeEquality() {
-//        Arrange
-        Employee employee1 = new Employee("Frodo", "Baggins", "ring bearer", 1);
-        Employee employee2 = new Employee("Frodo", "Baggins", "ring bearer", 1);
-//        Act + Assert
-        assertEquals(employee1, employee2);
-    }
-
-    @Test
-    void testEmployeeInequality() {
-//        Arrange
-        Employee employee1 = new Employee("Frodo", "Baggins", "ring bearer", 1);
-        Employee employee2 = new Employee("Frodo", "Baggins", "ring bearer", 2);
-//        Act + Assert
-        assertNotEquals(employee1, employee2);
-    }
-
-    @Test
-    void testEmployeeHashCode() {
-        assertEquals(-1026807203, employee.hashCode());
-    }
-
-    @Test
-    void testEmployeeToString() {
-        assertEquals("Employee{id=null, firstName='Frodo', lastName='Baggins', description='ring bearer', jobYears=1'}", employee.toString());
-    }
-
-    @Test
-    void testEmployeeId() {
-//        Arrange
-        long newId = 10L;
-//        Act
-        employee.setId(newId);
-//        Assert
-        assertEquals(newId, employee.getId());
-    }
-
-    @Test
-    void testEmployeeFirstName() {
-//        Arrange
-        String newFirstName = "Sam";
-//        Act
-        employee.setFirstName(newFirstName);
-//        Assert
-        assertEquals(newFirstName, employee.getFirstName());
-    }
-
-    @Test
-    void testEmployeeLastName() {
-//        Arrange
-        String newLastName = "Gamgee";
-//        Act
-        employee.setLastName(newLastName);
-//        Assert
-        assertEquals(newLastName, employee.getLastName());
-    }
-
-    @Test
-    void testEmployeeDescription() {
-//        Arrange
-        String newDescription = "gardener";
-//        Act
-        employee.setDescription(newDescription);
-//        Assert
-        assertEquals(newDescription, employee.getDescription());
-    }
-
-    @Test
-    void testEmployeeJobYears() {
-//        Arrange
-        int newJobYears = 2;
-//        Act
-        employee.setJobYears(newJobYears);
-//        Assert
-        assertEquals(newJobYears, employee.getJobYears());
-    }
-
-    @Test
-    void testEmployeeNullName() {
-//        Arrange
-        String firstName = null;
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeEmptyName() {
-//        Arrange
-        String firstName = "";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeNullLastName() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = null;
-        String description = "ring bearer";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeEmptyLastName() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "";
-        String description = "ring bearer";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeNullDescription() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = null;
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeEmptyDescription() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeNegativeJobYears() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = -1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeNullEmail() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeEmptyEmail() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears));
-    }
-
-    @Test
-    void testEmployeeSetNullFirstName() {
-//        Arrange
-        String firstName = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setFirstName(firstName));
-    }
-
-    @Test
-    void testEmployeeSetEmptyFirstName() {
-//        Arrange
-        String firstName = "";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setFirstName(firstName));
-    }
-
-    @Test
-    void testEmployeeSetNullLastName() {
-//        Arrange
-        String lastName = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setLastName(lastName));
-    }
-
-    @Test
-    void testEmployeeSetEmptyLastName() {
-//        Arrange
-        String lastName = "";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setLastName(lastName));
-    }
-
-    @Test
-    void testEmployeeSetNullDescription() {
-//        Arrange
-        String description = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setDescription(description));
-    }
-
-    @Test
-    void testEmployeeSetEmptyDescription() {
-//        Arrange
-        String description = "";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setDescription(description));
-    }
-
-    @Test
-    void testEmployeeSetNegativeJobYears() {
-//        Arrange
-        int jobYears = -1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setJobYears(jobYears));
-    }
-}
-```
-
-#### 8. Add the new field to render methods in the `app.js` Javascript file:
-
-```javascript
-   class EmployeeList extends React.Component {
-    render() {
-        const employees = this.props.employees.map(employee =>
-            <Employee key={employee._links.self.href} employee={employee}/>
-        );
-        return (
-            <table>
-                <tbody>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Description</th>
-                        <th>Job Years</th>
-                    </tr>
-                    {employees}
-                </tbody>
-            </table>
-        )
-    }
-}
-````
-
-```javascript
-class Employee extends React.Component {
-    render() {
-        return (
-            <tr>
-                <td>{this.props.employee.firstName}</td>
-                <td>{this.props.employee.lastName}</td>
-                <td>{this.props.employee.description}</td>
-                <td>{this.props.employee.jobYears}</td>
-            </tr>
-        )
-    }
-}
-````
-
-#### 9. Add the new field to the run method in the `DatabaseLoader` class (you can also add new entries):
-
-```java
-    public void run(String... strings) throws Exception { // <4>
-    this.repository.save(new Employee("Frodo", "Baggins", "ring bearer", 1));
-}
-```
-
-#### Side note:
-
-If needed, you can view the changes made to the files by running the following command:
-
-1. Open the `basic` directory in the terminal.
-2. Run the following command:
-
-```bash
-./mvnw spring-boot:run
-```
-
-3. In a browser, navigate [here](http://localhost:8080/employees) to view the changes made to the application.
-
-## Commit the changes to the repository
+### 1. Commit the changes to the repository
 
 After all the changes are made, the next step is to commit the changes to the repository. This is done by running the
 following commands:
@@ -548,7 +218,7 @@ git push origin master
 - The second command commits the files in the staging area to the repository. The `closes #2` is used to close the issue
   created in GitHub.
 
-## Create a new tag for the new version
+### 2. Create a new tag for the new version
 
 After the changes are committed to the repository, the next step is to create a new tag for the new version:
 
@@ -560,7 +230,7 @@ git push origin v1.2.0
 - The first command adds a new tag named `v1.2.0` to the repository.
 - The second command pushes the tag to the remote repository.
 
-## Create a new tag to mark the end of the first part of the assignment
+### 3. Create a new tag to mark the end of the first part of the assignment
 
 After all the changes are made, the next step is to create a new tag to mark the end of the first part of the
 assignment:
@@ -573,15 +243,14 @@ git push origin ca1-part1
 - The first command adds a new tag named `ca1-part1` to the repository.
 - The second command pushes the tag to the remote repository.
 
-### Part 2:
+## Part 2:
 
-### 2.1.: Adding a new feature to the application: email field
+## 2.1.: Adding a new feature to the application: email field
 
 This second part of the assignment should be developed using branches. The master branch should be used to ”publish” the
-”stable” versions of the Tutorial
-React.js and Spring Data REST Application.
+”stable” versions of the Tutorial React.js and Spring Data REST Application.
 
-#### 1. Start by creating a new branch named `email-field`:
+### 1. Start by creating a new branch named `email-field`:
 
 ```bash
 git checkout -b email-field
@@ -591,436 +260,7 @@ git checkout -b email-field
 - The -b flag is used to create a new branch.
 - The email-field is the name of the new branch.
 
-#### 2. Add the field to the `Employee` class:
-
-```java
-private String email;
-```
-
-#### 3. Add the new field to the `Employee` class constructor and corresponding validations:
-
-```java
-    public Employee(String firstName, String lastName, String description, int jobYears, String email) {
-    if (!validateArguments(firstName, lastName, description, jobYears, email)) {
-        throw new IllegalArgumentException("Invalid arguments");
-    }
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.description = description;
-    this.jobYears = jobYears;
-    this.email = email;
-}
-
-private boolean validateArguments(String firstName, String lastName, String description, int jobYears, String email) {
-    if (firstName == null || lastName == null || description == null || firstName.trim().isEmpty() || lastName.trim().isEmpty() || description.trim().isEmpty() || jobYears < 0) {
-        return false;
-    }
-    if (email == null || email.trim().isEmpty()) {
-        return false;
-    }
-    return true;
-}
-```
-
-#### 4. Add the new field to the `Employee` class `toString` method:
-
-```java
-
-@Override
-public String toString() {
-    return "Employee{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", description='" + description + '\'' +
-            ", jobYears=" + jobYears +
-            ", email='" + email + '\'' +
-            '}';
-}
-```
-
-#### 5. Add the new field to the `Employee` class `equals` and `hashCode` methods:
-
-```java
-
-@Override
-public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Employee employee = (Employee) o;
-    return jobYears == employee.jobYears && Objects.equals(id, employee.id) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(description, employee.description) && Objects.equals(email, employee.email);
-}
-
-@Override
-public int hashCode() {
-    return Objects.hash(id, firstName, lastName, description, jobYears, email);
-}
-```
-
-#### 6. Add the new field to the `Employee` class `get` and `set` methods:
-
-```java
-public String getEmail() {
-    return email;
-
-}
-
-public void setEmail(String email) {
-    if (email == null || email.trim().isEmpty()) {
-        throw new IllegalArgumentException("Invalid email");
-    } else {
-        this.email = email;
-    }
-}
-```
-
-#### 7. Create an EmployeeTest class to test the new field to ensure it is working as expected:
-
-```java
-class EmployeeTest {
-
-    private Employee employee;
-
-    @BeforeEach
-    void setUp() {
-        String firstName = "Frodo";
-        String lastName = "Baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-        String email = "email@gmail.com";
-        employee = new Employee(firstName, lastName, description, jobYears, email);
-    }
-
-    @Test
-    void testEmployee() {
-        assertEquals("Frodo", employee.getFirstName());
-        assertEquals("Baggins", employee.getLastName());
-        assertEquals("ring bearer", employee.getDescription());
-        assertEquals(1, employee.getJobYears());
-        assertEquals("email@gmail.com", employee.getEmail());
-    }
-
-    @Test
-    void testEmployeeEquality() {
-//        Arrange
-        Employee employee1 = new Employee("Frodo", "Baggins", "ring bearer", 1, "email@gmail.com");
-        Employee employee2 = new Employee("Frodo", "Baggins", "ring bearer", 1, "email@gmail.com");
-//        Act + Assert
-        assertEquals(employee1, employee2);
-    }
-
-    @Test
-    void testEmployeeInequality() {
-//        Arrange
-        Employee employee1 = new Employee("Frodo", "Baggins", "ring bearer", 1, "email@gmail.com");
-        Employee employee2 = new Employee("Frodo", "Baggins", "ring bearer", 2, "email@gmail.com");
-//        Act + Assert
-        assertNotEquals(employee1, employee2);
-    }
-
-    @Test
-    void testEmployeeHashCode() {
-        assertEquals(-1026807203, employee.hashCode());
-    }
-
-    @Test
-    void testEmployeeToString() {
-        assertEquals("Employee{id=null, firstName='Frodo', lastName='Baggins', description='ring bearer', jobYears=1, email='email@gmail.com'}", employee.toString());
-    }
-
-    @Test
-    void testEmployeeId() {
-//        Arrange
-        long newId = 10L;
-//        Act
-        employee.setId(newId);
-//        Assert
-        assertEquals(newId, employee.getId());
-    }
-
-    @Test
-    void testEmployeeFirstName() {
-//        Arrange
-        String newFirstName = "Sam";
-//        Act
-        employee.setFirstName(newFirstName);
-//        Assert
-        assertEquals(newFirstName, employee.getFirstName());
-    }
-
-    @Test
-    void testEmployeeLastName() {
-//        Arrange
-        String newLastName = "Gamgee";
-//        Act
-        employee.setLastName(newLastName);
-//        Assert
-        assertEquals(newLastName, employee.getLastName());
-    }
-
-    @Test
-    void testEmployeeDescription() {
-//        Arrange
-        String newDescription = "gardener";
-//        Act
-        employee.setDescription(newDescription);
-//        Assert
-        assertEquals(newDescription, employee.getDescription());
-    }
-
-    @Test
-    void testEmployeeJobYears() {
-//        Arrange
-        int newJobYears = 2;
-//        Act
-        employee.setJobYears(newJobYears);
-//        Assert
-        assertEquals(newJobYears, employee.getJobYears());
-    }
-
-    @Test
-    void testEmployeeEmail() {
-//        Arrange
-        String newEmail = "email@hotmail.com";
-//        Act
-        employee.setEmail(newEmail);
-//        Assert
-        assertEquals(newEmail, employee.getEmail());
-    }
-
-    @Test
-    void testEmployeeNullName() {
-//        Arrange
-        String firstName = null;
-        String lastName = "baggins";
-        String description = "ring bearer";
-        String email = "email@gmail.com";
-        int jobYears = 1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeEmptyName() {
-//        Arrange
-        String firstName = "";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-        String email = "email@gmail.com";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeNullLastName() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = null;
-        String description = "ring bearer";
-        int jobYears = 1;
-        String email = "email@gmail.com";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeEmptyLastName() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "";
-        String description = "ring bearer";
-        int jobYears = 1;
-        String email = "email@gmail.com";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeNullDescription() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = null;
-        int jobYears = 1;
-        String email = "email@gmail.com";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeEmptyDescription() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "";
-        int jobYears = 1;
-        String email = "email@gmail.com";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeNegativeJobYears() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = -1;
-        String email = "email@gmail.com";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeNullEmail() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-        String email = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeEmptyEmail() {
-//        Arrange
-        String firstName = "frodo";
-        String lastName = "baggins";
-        String description = "ring bearer";
-        int jobYears = 1;
-        String email = " ";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-    }
-
-    @Test
-    void testEmployeeSetNullFirstName() {
-//        Arrange
-        String firstName = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setFirstName(firstName));
-    }
-
-    @Test
-    void testEmployeeSetEmptyFirstName() {
-//        Arrange
-        String firstName = "";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setFirstName(firstName));
-    }
-
-    @Test
-    void testEmployeeSetNullLastName() {
-//        Arrange
-        String lastName = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setLastName(lastName));
-    }
-
-    @Test
-    void testEmployeeSetEmptyLastName() {
-//        Arrange
-        String lastName = "";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setLastName(lastName));
-    }
-
-    @Test
-    void testEmployeeSetNullDescription() {
-//        Arrange
-        String description = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setDescription(description));
-    }
-
-    @Test
-    void testEmployeeSetEmptyDescription() {
-//        Arrange
-        String description = "";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setDescription(description));
-    }
-
-    @Test
-    void testEmployeeSetNegativeJobYears() {
-//        Arrange
-        int jobYears = -1;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setJobYears(jobYears));
-    }
-
-    @Test
-    void testEmployeeSetNullEmail() {
-//        Arrange
-        String email = null;
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setEmail(email));
-    }
-
-    @Test
-    void testEmployeeSetEmptyEmail() {
-//        Arrange
-        String email = " ";
-//        Act + Assert
-        assertThrows(IllegalArgumentException.class, () -> employee.setEmail(email));
-    }
-}
-```
-
-#### 8. Add the new field to render methods in the `app.js` Javascript file:
-
-```javascript
-class EmployeeList extends React.Component {
-    render() {
-        const employees = this.props.employees.map(employee =>
-            <Employee key={employee._links.self.href} employee={employee}/>
-        );
-        return (
-            <table>
-                <tbody>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Description</th>
-                        <th>Job Years</th>
-                        <th>Email</th>
-                    </tr>
-                    {employees}
-                </tbody>
-            </table>
-        )
-    }
-}
-```
-
-```javascript
-class Employee extends React.Component {
-    render() {
-        return (
-            <tr>
-                <td>{this.props.employee.firstName}</td>
-                <td>{this.props.employee.lastName}</td>
-                <td>{this.props.employee.description}</td>
-                <td>{this.props.employee.jobYears}</td>
-                <td>{this.props.employee.email}</td>
-            </tr>
-        )
-    }
-}
-```
-
-#### 9. Add the new field to the run method in the `DatabaseLoader` class (you can also add new entries):
-
-```java
-    public void run(String... strings) throws Exception { // <4>
-    this.repository.save(new Employee("Frodo", "Baggins", "ring bearer", 1, "email@gmail.com"));
-}
-```
-
-## Commit the changes to the repository
+### 2. Commit the changes to the repository
 
 After all the changes are made, the next step is to commit the changes. Since we are working with branches, things are
 going to be slightly different. This is done by running the following commands:
@@ -1037,7 +277,7 @@ git push origin email-field
 - The third command pushes the commit to the remote repository. Since the branch wasn't pushed the remote repository
   before, this command not only pushes the commits but also the new branch to the remote repository.
 
-## Merge the branch to the master branch
+### 3. Merge the branch to the master branch
 
 After all this process it is necessary to merge the branch to the master branch. This is done by running the following
 commands:
@@ -1054,7 +294,7 @@ git push origin master
   branches.
 - The third command pushes the commit to the remote repository.
 
-## Create a new tag for the new version
+### 4. Create a new tag for the new version
 
 After the changes are committed to the repository, the next step is to create a new tag for the new version:
 
@@ -1066,10 +306,12 @@ git push origin v1.3.0
 - The first command adds a new tag named `v1.3.0` to the repository.
 - The second command pushes the tag to the remote repository.
 
-### 2.2.: Create a new branch for fixing bugs named `fix-invalid-email`:
+## 2.2.: Bug fixes:
 
 Now that the email field is added to the application, it is necessary to fix a bug that allows invalid emails to be
 added to the application. This is done by creating a new branch named `fix-invalid-email`:
+
+### 1. Start by creating a new branch named `fix-invalid-email`:
 
 ```bash
 git checkout -b fix-invalid-email
@@ -1077,70 +319,7 @@ git checkout -b fix-invalid-email
 
 - This command creates a new branch named fix-invalid-email and switches to it.
 
-#### 1. Add validation to the method validateArguments in the `Employee` class:
-
-```java
-    private boolean validateArguments(String firstName, String lastName, String description, int jobYears, String email) {
-    if (firstName == null || lastName == null || description == null || firstName.trim().isEmpty() || lastName.trim().isEmpty() || description.trim().isEmpty() || jobYears < 0) {
-        return false;
-    }
-    if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.contains(".")) {
-        return false;
-    }
-    return true;
-}
-```
-
-#### 2. Add validation to the method setEmail in the `Employee` class:
-
-```java
-    public void setEmail(String email) {
-    if (email == null || email.trim().isEmpty() || !email.contains("@") || !email.contains(".")) {
-        throw new IllegalArgumentException("Invalid email");
-    } else {
-        this.email = email;
-    }
-}
-```
-
-#### 3. Add tests to the EmployeeTest class to ensure that the new validation is working as expected:
-
-```java
-
-@Test
-void testEmployeeSetInvalidEmailSecondTest() {
-//        Arrange
-    String email = "email@com";
-//        Act + Assert
-    assertThrows(IllegalArgumentException.class, () -> employee.setEmail(email));
-}
-
-@Test
-void testCreateEmployeeWithInvalidEmail() {
-//         Arrange
-    String firstName = "Frodo";
-    String lastName = "Baggins";
-    String description = "ring bearer";
-    int jobYears = 1;
-    String email = "emailemail.com";
-//         Act + Assert
-    assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-}
-
-@Test
-void testCreateEmployeeWithInvalidEmailSecondTest() {
-//         Arrange
-    String firstName = "Frodo";
-    String lastName = "Baggins";
-    String description = "ring bearer";
-    int jobYears = 1;
-    String email = "email@com";
-//         Act + Assert
-    assertThrows(IllegalArgumentException.class, () -> new Employee(firstName, lastName, description, jobYears, email));
-}
-```
-
-## Commit the changes to the repository
+### 2. Commit the changes to the repository
 
 After all the changes are made, the next step is to commit the changes. This is done by running the following commands:
 
@@ -1156,7 +335,7 @@ git push origin fix-invalid-email
 - The third command pushes the commit to the remote repository. Since the branch wasn't pushed the remote repository
   before, this command not only pushes the commits but also the new branch to the remote repository.
 
-## Merge the branch to the master branch
+### 3. Merge the branch to the master branch
 
 After all this process it is necessary to merge the branch to the master branch. This is done by running the following
 commands:
@@ -1174,7 +353,7 @@ git push origin master
   branches.
 - The third command pushes the commit to the remote repository.
 
-## Create a new tag for the new version
+### 4. Create a new tag for the new version
 
 After the changes are committed to the repository, the next step is to create a new tag for the new version:
 
@@ -1186,7 +365,7 @@ git push origin v1.3.0
 - The first command adds a new tag named `v1.3.1` to the repository.
 - The second command pushes the tag to the remote repository.
 
-## Create a new tag to mark the end of the second part of the assignment
+### 5. Create a new tag to mark the end of the second part of the assignment
 
 After all the changes are made, the next step is to create a new tag to mark the end of the second part of the
 assignment:
@@ -1199,7 +378,7 @@ git push origin ca1-part2
 - The first command adds a new tag named `ca1-part2` to the repository.
 - The second command pushes the tag to the remote repository.
 
-## Alternative to Git: Mercurial
+# Alternative to Git: Mercurial
 
 Mercurial is a distributed version control system (DVCS) designed for managing projects of all sizes, from small to very
 large. It was created by Matt Mackall in 2005 and is written mostly in Python. Like Git, Mercurial allows multiple
@@ -1214,90 +393,102 @@ feature-rich and customizable, while Mercurial's interface is often considered m
 Ultimately, the choice between Mercurial and Git depends on factors such as project complexity, team preferences, and
 specific workflow requirements.
 
-### Using Mercurial to the goals of this assignment
+## Using Mercurial to the goals of this assignment
 
 If needed, Mercurial can be used to achieve the same goals as Git. To do so, one would follow a similar workflow with
-some differences in the commands used:
+some differences in the commands used.
 
-#### 1. Initializing a new repository
+Different from Git, Mercurial uses the `hg` command to perform operations on the repository. This
+is done by running the following command:
 
-Different from Git, Mercurial uses the `hg` command to perform operations on the repository. To create a new repository,
-the following command can be used:
+### 1. Cloning a repository:
 
 ```bash
-cd path/to/directory
+hg clone <repository-url>
 ```
 
-#### 2. Run the following command to create a new repository:
+### 2. Initializing a new repository:
 
 ```bash
 hg init
 ```
 
-#### 3. Add the files to the repository:
+### 3. Add the files to the repository:
 
 ```bash
 hg add .
 ```
 
-#### 4. Commit the files to the repository:
+### 4. Commit the files to the repository:
 
 ```bash
-hg commit -m "Initial commit"
+hg commit -m "commit message"
 ```
 
-#### 5. Push the repository to a remote location:
+### 5. Push the repository to a remote location:
 
-Similar to `git push`, Mercurial uses the `hg push` command to push the repository to a remote location:
+If we want to link our local repository with a remote one in Mercurial, the following command can be used:
 
 ```bash
-hg push <repository-URL>
+hg paths default <repository-URL>
 ```
 
 Alternatively, if we only want to push changes to the remote repository, the following command can be used:
 
 ```bash
-hg push
+hg push -b <branch-name>
 ```
 
-#### 6. Add a tag to the commit:
+- The -b flag is used to specify the branch to push to the remote repository.
+- The -b flag can be removed if we want to push the changes to the default branch.
+
+### 6. Add a tag to the commit:
 
 To add a tag to the commit, the following command can be used:
 
 ```bash
-hg tag -m "Version 1.0.0" v1.0.0
+hg tag -m "message" <tag-name>
 ```
 
-#### 7. Pushing tags:
+- The -m flag is used to specify a message for the tag.
+- The <tag-name> is the name of the tag.
+
+### 7. Pushing tags:
 
 To push the tags to the remote repository, the following command can be used:
 
 ```bash
-hg push --new-branch
+hg push . --rev <tag-name>
 ```
 
-In order to follow the steps of the assignment, the commands used in the tutorial can be replaced by the corresponding
-Mercurial commands. For example, to create a new branch in Mercurial, the following command can be used:
+- The --rev flag is used to specify the revision to push to the remote repository.
+- The <tag-name> is the name of the tag.
 
-#### 8. Creating branches in Mercurial:
+### 8. Creating branches in Mercurial:
 
 ```bash
 hg branch <branch-name>
 ```
 
-#### 9. Switching branches:
+### 9. Switching branches:
 
 ```bash
 hg update <branch-name>
 ```
 
-#### 10. Merging branches:
+### 10. Merging branches:
 
 ```bash
-hg merge <branch-name>
+hg merge  --tool internal:merge <branch-name>
 ```
 
-## Conclusion
+- The --tool flag is used to specify the merge tool to use. In this case, the internal:merge tool is used.
+- The <branch-name> is the name of the branch to merge.
+
+By replicating the workflow used in Git, it is possible to achieve the same goals using Mercurial. The commands used in
+Mercurial are slightly different from the ones used in Git, but the overall process is similar.
+
+# Conclusion
 
 In this article, we have discussed the process of using Git to manage a software development project. We
 have covered the basic concepts of version control, the benefits of using Git, and the steps involved in setting up a
