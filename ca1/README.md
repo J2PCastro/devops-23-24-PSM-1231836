@@ -169,12 +169,15 @@ Assuming a remote repository in GitHub is already created, the next task is to p
 by running the following commands:
 
 ```bash
+git branch -M master
 git remote add origin <repository-url>
 git push -u origin master
 ```
 
+- The first command renames the current branch to master. This is always a good practice to keep the default branch
+  named master. 
 - The first command adds a remote repository named `origin` with the URL `<repository-url>`. This URL is the URL of the
-  remote repository in GitHub. This first step is only necessary if the local repository is not yet linked to the remote
+  remote repository in GitHub. This second step is only necessary if the local repository is not yet linked to the remote
   one, as it is its function.
 - The second command pushes the commit to the remote repository. The `-u` flag is used to set the remote repository as
   the default remote repository for the local repository. This means that in the future, the `git push` command can be
