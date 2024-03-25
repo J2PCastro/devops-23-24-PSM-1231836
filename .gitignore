@@ -117,3 +117,12 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/intellij
 
 lib/
+
+.idea/class_assignments.iml
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/modules/
+.idea/vcs.xml
