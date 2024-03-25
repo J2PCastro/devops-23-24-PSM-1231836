@@ -81,3 +81,13 @@ task copySources(type: Copy, dependsOn: classes) {
         project.file('backup').mkdirs()
     }
 }
+
+task zipSources(type: Zip, dependsOn: classes) {
+    group = "DevOps"
+    description = "Zips the contents of the src folder"
+
+    archiveFileName = 'src.zip'
+    destinationDirectory = file('.')
+
+    from 'src'
+}
