@@ -4,11 +4,23 @@
 build/
 
 bin/
+
 .vscode/
+
 .idea/*
+
 /.idea/
+
 .DS_Store/
+
+backup/
+
 .classpath
+
 .project
+
 .settings
+
 *.swp
+
+src.zip
