@@ -35,3 +35,18 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Ignore Gradle project-specific cache directory
+.gradle/
+
+.idea/*
+
+/.idea/
+
+.DS_Store/
+
+backup/
+
+*.swp
+
+src.zip
