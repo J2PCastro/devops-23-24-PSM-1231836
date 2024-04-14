@@ -34,3 +34,16 @@ frontend {
 	cleanScript = "run clean"
 	checkScript = "run check"
 }
+
+task copyJar(type: Copy, dependsOn: build) {
+	group = "DevOps"
+	description = "Copies the generated JAR to the dist folder"
+
+	from 'build/libs/'
+	into 'dist'
+	include '*.jar'
+
+	doLast {
+		project.file('dist')
+	}
+}

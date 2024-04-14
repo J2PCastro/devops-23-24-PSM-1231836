@@ -50,3 +50,13 @@ backup/
 *.swp
 
 src.zip
+
+src/main/resources/static/built/
+
+.frontend-gradle-plugin/
+
+node/
+
+node_modules/
+
+dist/
