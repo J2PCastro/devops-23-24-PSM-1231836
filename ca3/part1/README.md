@@ -40,12 +40,12 @@ this assignment can be found [here](https://github.com/J2PCastro/devops-23-24-PS
 
 - [Setup](#setup)
 - [Experimenting with VirtualBox](#experimenting-with-virtualbox)
-  - [Setting Up the Environment](#setting-up-the-environment)
-  - [Cloning the Repository](#cloning-the-repository)
-  - [Running the Projects](#running-the-projects)
-    - [Spring Boot Tutorial Basic Project](#spring-boot-tutorial-basic-project)
-    - [Gradle_Basic_Demo Project](#gradle_basic_demo-project)
-    - [Why should we launch the client side in host and server side in guest?](#why-should-we-launch-the-client-side-in-host-and-server-side-in-guest)
+    - [Setting Up the Environment](#setting-up-the-environment)
+    - [Cloning the Repository](#cloning-the-repository)
+    - [Running the Projects](#running-the-projects)
+        - [Spring Boot Tutorial Basic Project](#spring-boot-tutorial-basic-project)
+        - [Gradle_Basic_Demo Project](#gradle_basic_demo-project)
+        - [Why should we launch the client side in host and server side in guest?](#why-should-we-launch-the-client-side-in-host-and-server-side-in-guest)
 - [Conclusion](#conclusion)
 
 # Setup
@@ -175,6 +175,10 @@ typically lacking a GUI, is aptly deployed on the guest machine, ensuring effici
 allows the server to operate in a headless manner, optimizing performance by avoiding unnecessary GUI-related resource
 consumption. Trying to run a GUI application in a headless server would result in an error and the application wouldn't
 start.
+
+Since all the necessary dependencies were already installed in the VM and all file permissions were correctly set in
+the project files, no difficulties were encountered when running the projects in the VM. The projects were successfully
+built and run, and the applications were accessible from the host machine.
 
 # Conclusion
 
