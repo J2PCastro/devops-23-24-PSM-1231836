@@ -15,7 +15,9 @@ class App extends React.Component { // <1>
 	}
 
 	componentDidMount() { // <2>
-		// To run ca3/part2, replace the /api/employees with /react-and-spring-data-rest-basic-0.0.1-SNAPSHOT/api/employees
+		/*
+		To run ca2/part2, replace the /react-and-spring-data-rest-basic-0.0.1-SNAPSHOT/api/employees with /api/employees
+		 */
 		client({method: 'GET', path: '/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT/api/employees'}).done(response => {
 			this.setState({employees: response.entity._embedded.employees});
 		});
