@@ -62,7 +62,7 @@ Before proceeding, some notes on the setup process:
   install
   openjdk 17.
 
-After following the gide provided in the lecture slides, you should now have:
+After following the guide provided in the lecture slides, you should now have:
 
 - A new VM in VirtualBox with Ubuntu Server installed on it.
 - A host-only network adapter configured in the VM settings.
@@ -141,7 +141,7 @@ cd devops-23-24-PSM-1231836/ca2/part2/react-and-spring-data-rest-basic/
 
 After running this command the project wil start its build process, and then it will start the application. The user can
 access the application by opening a web browser on the host machine and navigating to `http://<vm-ip>:8080`. Note here
-that the IP address may vary depending on the configuration of the host-only network adapter.
+that the IP address may vary depending on the IP used in the `01-netcfg.yaml` file configuration.
 
 ### Gradle_Basic_Demo Project
 
@@ -155,17 +155,18 @@ cd devops-23-24-PSM-1231836/ca2/part1/
 ```
 
 After running this command the project wil start its build process, and then it will start the server side of the chat
-application. Now in order to test if everything is working correctly, the user should open another terminal window and
-run the following command:
+application. Now in order to test if everything is working correctly, the user should open a terminal in the host
+machine
+and run the following command:
 
 ```bash
-./gradlew runClient --args="192.168.56.5 59001"
+./gradlew runClient --args="<vm-ip> 59001"
 ```
 
 This command will start the client side of the chat application. Why the extra arguments? The first argument is the IP
-address of the server, and the second argument is the port number that the server is listening on. This is required in
-order to establish a connection between the client and the server. Another alternative to this is to change the
-build.gradle file and set the server IP address and port number as default values.
+address of the server, in this case the VM IP address, and the second argument is the port number that the server is
+listening on. This is required in order to establish a connection between the client and the server. Another alternative
+to this is to change the build.gradle file and set the server IP address and port number as default values.
 
 #### Why should we launch the client side in host and server side in guest?
 
@@ -174,7 +175,10 @@ host machine, where user interaction occurs. Conversely, the server side, tasked
 typically lacking a GUI, is aptly deployed on the guest machine, ensuring efficient resource utilization. This setup
 allows the server to operate in a headless manner, optimizing performance by avoiding unnecessary GUI-related resource
 consumption. Trying to run a GUI application in a headless server would result in an error and the application wouldn't
-start.
+start. Another reason might be that the server side is running in a VM, which is isolated from the host machine, and
+therefore the client side must be run on the host machine to establish a connection between the two. If the connection is
+established, then it means all previous configurations were done correctly and the interaction between the client and
+server is working as expected.
 
 Since all the necessary dependencies were already installed in the VM and all file permissions were correctly set in
 the project files, no difficulties were encountered when running the projects in the VM. The projects were successfully
