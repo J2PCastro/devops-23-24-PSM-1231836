@@ -4,15 +4,15 @@
 
 The objective of this report is to furnish a comprehensive overview of the second part of the third class assignment.
 This part focuses on the use of Vagrant an open-source tool used for building and managing portable virtual development
-environments. The report will provide a detailed explanation of the Vagrantfile used to create the virtual machine, the
-installation of the necessary software, and the configuration of the virtual machine. Additionally, the report will
-tackle the challenges encountered during the assignment and the solutions implemented to overcome them.
+environments. The report will provide a detailed explanation of the Vagrantfile used to create the virtual machines (
+VMs), the installation of the necessary software, and the configuration of the virtual machine. Additionally, the
+report will tackle the challenges encountered during the assignment and the solutions implemented to overcome them.
 
 Vagrant allows developers to create reproducible and isolated development environments, making it easier to share and
 collaborate on projects across different machines and operating systems. With Vagrant, you can define your environment's
-configuration in a simple text file and quickly spin up or tear down virtual machines with the desired specifications.
+configuration in a simple text file and quickly spin up or tear down VMs with the desired specifications.
 
-Vagrant provides key advantages for development teams. It ensures portability and consistency by offering a uniform
+It also provides key advantages for development teams. It ensures portability and consistency by offering a uniform
 environment across machines and Operating Systems (OSs), easing project sharing. Its isolation and repeatability
 features create isolated virtual environments, preventing conflicts and enabling easy replication. Moreover, Vagrant
 streamlines setup through automated provisioning, automating configuration tasks and enhancing reproducibility across
@@ -21,9 +21,9 @@ the development lifecycle.
 Vagrant has its drawbacks. Firstly, there's a performance overhead due to running virtual machines, which can impact
 application performance, especially for resource-intensive tasks. Secondly, there's a learning curve involved in setting
 up and configuring Vagrant environments, particularly for newcomers to virtualization concepts. Lastly, resource
-consumption is a concern as Vagrant Virtual machines (VMs) consume system resources, potentially straining the host
-machine, particularly when running multiple environments simultaneously or with high resource allocations. These
-drawbacks were felt during the assignment, especially the learning curve associated with Vagrant configuration.
+consumption is a concern as Vagrant VMs consume system resources, potentially straining the host machine, particularly
+when running multiple environments simultaneously or with high resource allocations. These drawbacks were felt during
+the assignment, mainly the learning curve associated with Vagrant configuration.
 
 The goal of Part 2 of this assignment is to use Vagrant to set up a virtual environment to execute the tutorial spring
 boot application, gradle "basic" version, developed in CA2, Part2.
@@ -34,7 +34,7 @@ to the [Creating Issues](../../ca1/README.md) section on the Class Assignment 1 
 This Class Assignment was made by the student José Castro nº1231836 of class B and the outcome of the work undertaken in
 this assignment can be found [here](https://github.com/J2PCastro/devops-23-24-PSM-1231836).
 
-## Table of Contents
+# Table of Contents
 
 - [Setup](#setup)
 - [Vagrantfile](#vagrantfile)
@@ -42,21 +42,22 @@ this assignment can be found [here](https://github.com/J2PCastro/devops-23-24-PS
 - [Update Vagrantfile](#update-vagrantfile)
 - [Running Vagrant](#running-vagrant)
 - [Challenges](#challenges)
-  - [Issue 1: Base Box Version](#issue-1-base-box-version)
-  - [Issue 2: Java Version](#issue-2-java-version)
-  - [Issue 3: H2 Database Version](#issue-3-h2-database-version)
-  - [Issue 4: Apache Tomcat Version](#issue-4-apache-tomcat-version)
-  - [Issue 5: Missing plugins and dependencies](#issue-5-missing-plugins-and-dependencies)
-  - [Issue 6: Application Configuration](#issue-6-application-configuration)
-  - [Issue 7: App.js Configuration](#issue-7-appjs-configuration)
-  - [Issue 8: Add ServletInitializer](#issue-8-add-servletinitializer)
-  - [Issue 9: Small rendering issues](#issue-9-small-rendering-issues)
+    - [Issue 1: Base Box Version](#issue-1-base-box-version)
+    - [Issue 2: Java Version](#issue-2-java-version)
+    - [Issue 3: H2 Database Version](#issue-3-h2-database-version)
+    - [Issue 4: Apache Tomcat Version](#issue-4-apache-tomcat-version)
+        - [Note on Apache Tomcat](#note-on-apache-tomcat)
+    - [Issue 5: Missing plugins and dependencies](#issue-5-missing-plugins-and-dependencies)
+    - [Issue 6: Application Configuration](#issue-6-application-configuration)
+    - [Issue 7: App.js Configuration](#issue-7-appjs-configuration)
+    - [Issue 8: Add ServletInitializer](#issue-8-add-servletinitializer)
+    - [Issue 9: Small rendering issues](#issue-9-small-rendering-issues)
 - [Notes](#notes)
 - [Running Vagrant file after changes](#running-vagrant-file-after-changes)
-  - [Another note](#another-note)
+    - [Another note](#another-note)
 - [Alternative to VirtualBox: KVM/QEMU](#alternative-to-virtualbox-kvmqemu)
-  - [Installing KVM/QEMU on Ubuntu](#installing-kvmqemu-on-ubuntu)
-  - [Configuring Vagrant for KVM/QEMU](#configuring-vagrant-for-kvmqemu)
+    - [Installing KVM/QEMU on Ubuntu](#installing-kvmqemu-on-ubuntu)
+    - [Configuring Vagrant for KVM/QEMU](#configuring-vagrant-for-kvmqemu)
 - [Conclusion](#conclusion)
 
 # Setup
@@ -65,18 +66,18 @@ First, we need to install Vagrant. To do this, we need to navigate to the [Vagra
 and follow the steps to download and install the latest version of Vagrant for your operating system.
 
 In order for Vagrant to work, we also need to install a provider. In this case, we will be using VirtualBox since it is
-already installed on our machine from previous assignments. Vagrant provisions and manages virtual machines using
-providers like VirtualBox and that is why we need to have it installed. A provision is a set of instructions that
-configure the virtual machine with the necessary software and settings.
+already installed on our machine from previous assignments. Vagrant provisions and manages VMs using providers like
+VirtualBox and that is why we need to have it installed. A provision is a set of instructions that configure the virtual
+machine with the necessary software and settings.
 
 # Vagrantfile
 
-The Vagrantfile is a configuration file that defines the virtual machine's settings and provisions. It is written in
-Ruby and contains the specifications for the VM, such as the base box, network settings, and provisioning scripts. For
-this assignment, the Vagrantfile used as an initial solution can be
+The Vagrantfile is a configuration file that defines the VMs settings and provisions. It is written in Ruby and contains
+the specifications for the VM, such as the base box, network settings, and provisioning scripts. For this assignment,
+the Vagrantfile used as an initial solution can be
 found [here](https://bitbucket.org/pssmatos/vagrant-multi-spring-tut-demo/).
 
-After navigating to the above repository, we should analyze the Vagrantfile to understand the VM's configuration and
+After navigating to the above repository, we should analyze the Vagrantfile to understand the VMs configuration and
 study the README file to understand how to run the VM. Let's start by analyzing the Vagrantfile by sections:
 
 ```ruby
@@ -165,10 +166,10 @@ webserver VM is also configured with more memory allocation and a forwarded port
 The provision script installs Tomcat and clones the tutorial spring boot application repository. The script then builds
 the application using Gradle and deploys the generated war file to Tomcat.
 
-The Vagrantfile is well-structured and provides clear configurations for the main VM, database VM, and webserver VM. It
-defines the base box, network settings, memory allocation, forwarded ports, and provisioning scripts for each VM. The
-provisioning scripts install the necessary software and configure the VMs according to the requirements of the
-tutorial spring boot application.
+The Vagrantfile is well-structured and provides clear configurations for the database VM and webserver VM. It defines
+the base box, network settings, memory allocation, forwarded ports, and provisioning scripts for each VM. The
+provisioning scripts install the necessary software and configure the VMs according to the requirements of the tutorial
+spring boot application.
 
 For readability purposes, the commented lines in the Vagrantfile were removed.
 
@@ -222,17 +223,10 @@ We will use the application developed in CA2 Part2. The application uses Spring 
 embedded Tomcat server that allows us to package our Spring application as a self-contained `jar` file, making it easy
 to deploy and run without needing to install and configure an external servlet container like Apache Tomcat separately.
 This approach simplifies the deployment process and is one of the key features that makes Spring Boot so convenient for
-building and deploying web applications. However, in this assignment, we will deploy the application in an external
-Tomcat server. This way we can change some aspects of the application in order to experiment and try to deploy the app
-in an external Tomcat server. This way it also allows me to explore and experiment with different technologies, as in
-the previous assignment the embedded Tomcat server was already used to deploy the app. To do so, we copy the application
-from the directory where it was originally developed to the directory where the Vagrantfile is. This was also done to
-prevent all other parts of the repository to "break" and stop working independently. This was done by running the
-following command:
-
-```bash
-cp -r path/to/ca2/part2/react-and-spring-data-rest-basic path/to/ca3/part2
-```
+building and deploying web applications. However, in this assignment, we will deploy the application to an external
+Tomcat server. This way we can change some aspects of the original application in order to experiment and try to deploy
+the app in an external Tomcat server. This method allows me to explore and experiment with different technologies,
+as in the previous assignment the embedded Tomcat server was already used to deploy the app.
 
 # Running Vagrant
 
@@ -258,26 +252,26 @@ After we are done with the VM, we can stop it by running the following command:
 vagrant halt
 ```
 
-This command will stop the VM, but it will keep the VM's state, allowing us to start it again later. If we want to
+This command will stop the VM, but it will keep the VMs state, allowing us to start it again later. If we want to
 destroy the VM and remove all its resources, we can run the following command:
 
 ```bash
 vagrant destroy -f
 ```
 
-This command will stop the VM and remove all its resources, including the virtual disk and network interfaces. It is
-important to note that this action is irreversible, and all data stored in the VM will be lost. The `-f` flag is used to
-force the destruction without confirmation.
+This command will stop the VMs and remove all their resources, including the virtual disk and network interfaces. It is
+important to note that this action is irreversible, and all data stored in the VMs will be lost. The `-f` flag is used
+to force the destruction without confirmation.
 
 # Challenges
 
 After performing all the above steps and trying to see the application running by navigating to the above links, we find
-that nothing is displayed on the browser. This issue was caused by the fact that the application contained in CA2
-Part2, that was copied to the new directory, has some compatibility issues with several of the software versions used in
-the Vagrantfile. After analyzing the issue and searching the internet for a solution, it was discovered that the version
-of Spring Boot used in the application was not compatible with both the version of Tomcat installed in the VM and the H2
-database installed in the VM. In addition to this several components were missing from the original application in order
-for it to be properly deployed and run in a Tomcat server. Let's address the issues now, step by step.
+that nothing is displayed on the browser. This issue is caused by the fact that the application contained in CA2 Part2
+has some compatibility issues with several of the software versions used in the Vagrantfile. After analyzing the issue
+and searching the internet for a solution, it was discovered that the version of Spring Boot used in the application
+isn't compatible with both the version of Tomcat installed in the VM and the H2 database installed in the VM. In
+addition to this several components were missing from the original application in order for it to be properly deployed
+and run in a Tomcat server. Let's address the issues now, step by step.
 
 ## Issue 1: Base Box Version
 
@@ -323,16 +317,14 @@ the latest version of the H2 database. The provision script should look like thi
 ## Issue 4: Apache Tomcat Version
 
 Tomcat 9 was the version that was installed in the web VM in the original Vagrantfile, however, the Spring Boot version
-of the application is incompatible with this version. To address this issue, we need to install the latest version of
-Tomcat in the VM (version 10.1.23 as of the making of this report). To do this, we need to update the provision script
-in the Vagrantfile to install Tomcat 10. The provision script should
-look like this:
+of the application is incompatible with this version. To address this issue, we need to install Tomcat 10 in the VM. To
+do this, we need to update the provision script in the Vagrantfile to look like this:
 
 ```ruby
       web.vm.provision "shell", inline: <<-SHELL, privileged: false
         sudo mkdir /opt/tomcat/
         cd /tmp
-        wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.tar.gz
+        wget https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.tar.gz
         sudo tar xzvf apache-tomcat-10*tar.gz -C /opt/tomcat --strip-components=1
         sudo chown -R vagrant:vagrant /opt/tomcat
         <rest of the script>
@@ -341,15 +333,29 @@ look like this:
 
 Here we are creating a directory for Tomcat, downloading the latest version of Tomcat, extracting the downloaded file,
 and changing the ownership of the Tomcat directory to the vagrant user. The rest of the script is the same as before.
+Notice that we are using the version 10.1.23 of Tomcat, and we are downloading it from the Apache archive website.
+
+### Note on Apache Tomcat
+
+We could use the latest version of Tomcat by downloading it from the official Apache Tomcat website. To check the latest
+version of Tomcat, navigate [here](https://dlcdn.apache.org/tomcat/). In this website you can see all the latest
+versions of Tomcat. Since the version used in this report is v10, enter the `tomcat-10/` directory, then enter the
+version directory that should look something like `v10.1.24/` (this number may vary depending on whatever is the latest
+version), and finally enter the `bin/` directory. Here you will find the latest version of Tomcat. To use the latest
+version on the provision script simply copy the URL from the browser and paste it in the `wget` command in the provision
+script adding the correct version of tomcat to the URL. The rest of the script should remain the same. Just note that if
+a future version of Tomcat is released, the URL will change and the script will most likely fail. The reason Ubuntu
+package manager is not used to install Tomcat is because the packages are not up-to-date and the latest version of
+Tomcat is not available in the Ubuntu repositories.
 
 ## Issue 5: Missing plugins and dependencies
 
-A plugin and a dependency were missing from the build.gradle file. The plugin was the `war` plugin and the dependency
-was the `spring-boot-starter-tomcat` dependency. The `war` plugin is used to generate `.war` files necessary for
-deployment of the app to an external servlet (Tomcat in this instance). The `spring-boot-starter-tomcat` is used to, in
-very simple terms, include he Tomcat servlet container during runtime, saying that our application will be running on a
-servlet container. To address this issue, we need to open the build.gradle file in the application and add the following
-lines:
+In the application developed in CA2 Part2 a plugin and a dependency were missing from the build.gradle file. The plugin
+was the `war` plugin and the dependency was the `spring-boot-starter-tomcat` dependency. The `war` plugin is used to
+generate `.war` files necessary for deployment of the app to an external servlet (Tomcat in this instance).
+The `spring-boot-starter-tomcat` is used to, in very simple terms, include he Tomcat servlet container during runtime,
+saying that our application will be running on a servlet container. To address this issue, we need to open the
+build.gradle file in the application and add the following lines:
 
 ```groovy
 plugins {
@@ -368,11 +374,10 @@ and the context path of the application. To address this issue, we need to chang
 the `src/main/resources` directory of the application to the following content:
 
 ```properties
-server.servlet.context-path=/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT
+#server.servlet.context-path=/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT
 spring.data.rest.base-path=/api
-#spring.datasource.url=jdbc:h2:mem:jpadb
+spring.datasource.url=jdbc:h2:mem:jpadb
 # In the following settings the h2 file is created in /home/vagrant folder
-spring.datasource.url=jdbc:h2:tcp://192.168.56.11:9092/./jpadb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
 spring.datasource.driverClassName=org.h2.Driver
 spring.datasource.username=sa
 spring.datasource.password=
@@ -384,20 +389,48 @@ spring.h2.console.path=/h2-console
 spring.h2.console.settings.web-allow-others=true
 ```
 
+Notice here that the `server.servlet.context-path` property was commented out and the `spring.datasource.url` property
+is pointing to an in memory database. This was done as a measure to allow the application contained in CA2 Part2 to
+still be run without needing an external database server and without needing to be deployed to an external Tomcat
+server.
+
+However, if left as is, the Vagrant VMs will not be able to access the H2 console and, the user, the app via the
+browser. This issue was addressed during the provisioning of the web VM. If we analyze the script we find two extra
+commands right after cloning the repository and moving into the correct directory:
+
+```Ruby
+      # Uncomment the first line in application.properties
+      sed -i '0,/^[ \t]*#server.servlet.context-path=/s//server.servlet.context-path=/g' src/main/resources/application.properties
+
+      # Modify the application.properties file to set SPRING_DATASOURCE_URL
+      sed -i 's|spring.datasource.url=.*|spring.datasource.url=jdbc:h2:tcp://192.168.56.11:9092/./jpadb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE|' src/main/resources/application.properties
+```
+
+This first command uncomment the `server.servlet.context-path` property in the `application.properties` file allowing us
+to access the application via the correct context path. The second command changes the `spring.datasource.url` property
+to point to the H2 database in the database VM. This way the application will be able to access the H2 database and the
+H2 console.
+
+The `sed` command is a stream editor that is used to perform basic text transformations on an input stream. It is a
+powerful tool for editing text files and is commonly used in shell scripts to automate text processing tasks.
+
 ## Issue 7: App.js Configuration
 
-The `App.js` file in the application must be changed in order to accommodate the new context path of the application.
-To do this, we need to open the `App.js` file in the `src/main/js` directory of the application and change the following
-line:
+The `App.js` file in the application must be changed in order to accommodate the new context path of the application. To
+do this, we need to open the `App.js` file in the `src/main/js` directory of the application and change it. For the same
+reasons mentioned above, we still want the CA2 Part2 application to run locally without needing to be deployed to an
+external Tomcat server. Again here we make use of the `sed` command to change the file. Pay close attention to the
+script right after the `chmod u+x gradlew` command in the provision script of the web VM:
 
-```javascript
-    componentDidMount()
-{ // <2>
-    client({method: 'GET', path: '/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT/api/employees'}).done(response => {
-        this.setState({employees: response.entity._embedded.employees});
-    });
-}
+```Ruby
+      # Modify the app.js file to set the correct path
+      sed -i "s|path: '/api/employees'|path: '/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT/api/employees'|" src/main/js/app.js
 ```
+
+This command changes the path in the `App.js` file to point to the correct context path of the application. It scans the
+app.js file for the `path: '/api/employees'` string and replaces it
+with `path: '/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT/api/employees'`. This way we will be able to access the
+correct context path of the application.
 
 ## Issue 8: Add ServletInitializer
 
@@ -439,9 +472,10 @@ Vagrantfile to clone the updated application.
 
 Two small notes:
 
-- The changes made in issues 1 through 4 were made after an extensive search online and with a lot of trial and error,
-  that being the reason why there were many commits done during this assignment;
-- The changes made in issues 5 through 9 were made and after carefully analyzing the project that was provided by the
+- The fixes made in issues 1 through 4 as well as issues 6 and 7 were made after an extensive search online and with a
+  lot of trial and error, that being the reason why there were many commits and a lot of restructuring done during this
+  assignment;
+- The fixes made in issues 5 through 9 were complemented after carefully analyzing the project that was provided by the
   teacher and that can be found [here](https://bitbucket.org/pssmatos/tut-basic-gradle/src/master/).
 
 ## Running Vagrant file after changes
@@ -470,7 +504,7 @@ After everything is working properly, we can stop the VMs by running the followi
 vagrant halt
 ```
 
-## Another note
+### Another note
 
 If after the VMs are "up" and we want to use their respective terminals, we can do so by running the following command:
 
@@ -589,8 +623,8 @@ ca3/part2/virtualbox_alternative directory.
 In conclusion, this report has provided a detailed exploration of setting up a virtual development environment using
 Vagrant as part of Class Assignment 3, Part 2. This proved to be the most challenging assignment yet, as it required
 extensive troubleshooting, configuration adjustments, and compatibility checks to ensure the successful deployment of
-the tutorial spring boot application. It caused a great sense of self-doubt and frustration, but in the end, it was a
-very rewarding experience as I was able to come up with a solution that pleased me and allowed me to grow as a student.
+the tutorial spring boot application but in the end, it was a very rewarding experience as I was able to come up with a
+solution that pleased me and allowed me to grow as a student.
 
 Vagrant proved to be a valuable tool for creating reproducible and isolated development environments. However,
 challenges such as compatibility issues with software versions, configuration adjustments, and the learning curve

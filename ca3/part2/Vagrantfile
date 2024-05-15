@@ -54,13 +54,13 @@ Vagrant.configure("2") do |config|
 
     web.vm.provision "shell", inline: <<-SHELL, privileged: false
       # For this part we are going to install Apache Tomcat. Again to prevent compatibility issues
-      # we are going to use the latest version as of the making of this file, which is 10.1.24
+      # we are going to use the latest version as of the making of this file, which is 10.1.23
 
       sudo mkdir /opt/tomcat/
 
       cd /tmp
 
-      wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.24/bin/apache-tomcat-10.1.24.tar.gz
+      wget https://archive.apache.org/dist/tomcat/tomcat-10/v10.1.23/bin/apache-tomcat-10.1.23.tar.gz
 
       sudo tar xzvf apache-tomcat-10*tar.gz -C /opt/tomcat --strip-components=1
 
