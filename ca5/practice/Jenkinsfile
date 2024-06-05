@@ -22,6 +22,7 @@ pipeline {
             steps {
                 echo 'Assembling ca2/part1 project...'
                 dir ('ca2/part1') {
+                    sh './gradlew clean'
                     sh './gradlew compileJava'
                     sh './gradlew jar'
                 }
