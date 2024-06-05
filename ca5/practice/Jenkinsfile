@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'JDK17'
+    }
+    stages {
+        stage ('Checkout') {
+            steps {
+                echo 'Checking out...'
+                git 'https://github.com/J2PCastro/devops-23-24-PSM-1231836.git'
+            }
+        }
+        stage('Prepare') {
+            steps {
+                echo 'Setting executable permissions for gradlew...'
+                dir('ca2/part1') {
+                    sh 'chmod +x gradlew'
+                }
+            }
+        }
+        stage ('Assemble') {
+            steps {
+                echo 'Assembling ca2/part1 project...'
+                dir ('ca2/part1') {
+                    sh './gradlew compileJava'
+                    sh './gradlew jar'
+                }
+            }
+        }
+        stage ('Test') {
+            steps {
+                echo 'Running tests...'
+                dir ('ca2/part1') {
+                    sh './gradlew test'
+                }
+            }
+        }
+        stage ('Archiving') {
+            steps {
+                echo 'Archiving...'
+                archiveArtifacts 'ca2/part1/build/libs/*.jar'
+            }
+        }
+    }
+}
