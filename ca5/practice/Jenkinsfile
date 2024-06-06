@@ -23,8 +23,7 @@ pipeline {
                 echo 'Assembling ca2/part1 project...'
                 dir ('ca2/part1') {
                     sh './gradlew clean'
-                    sh './gradlew compileJava'
-                    sh './gradlew jar'
+                    sh './gradlew assemble'
                 }
             }
         }
@@ -33,6 +32,12 @@ pipeline {
                 echo 'Running tests...'
                 dir ('ca2/part1') {
                     sh './gradlew test'
+                }
+            }
+            post {
+                always {
+                    echo 'Publishing test results...'
+                    junit 'ca2/part1/build/test-results/test/*.xml'
                 }
             }
         }
