@@ -5,7 +5,7 @@ LABEL authors="José Castro"
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 # Copy the WAR file from the ca2 directory to the webapps directory
-COPY ./ca2/part2/react-and-spring-data-rest-basic/build/libs/*.war /usr/local/tomcat/webapps/
+COPY ./ca2/part2/react-and-spring-data-rest-basic/build/libs/react-and-spring-data-rest-basic-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/
 
 # Expose port 8080
 EXPOSE 8080
