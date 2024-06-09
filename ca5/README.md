@@ -163,7 +163,7 @@ assignment. Inside this directory, we should create a `Jenkinsfile` with the fol
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage ('Checkout') {
             steps {
                 echo 'Checking out...'
                 git 'https://github.com/J2PCastro/devops-23-24-PSM-1231836.git'
@@ -172,25 +172,48 @@ pipeline {
         stage('Prepare') {
             steps {
                 echo 'Setting executable permissions for gradlew...'
-                dir('ca2/part1') {
-                    sh 'chmod +x gradlew'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part1') {
+                            sh 'chmod +x gradlew'
+                        }
+                    } else {
+                        echo 'Skipping chmod on Windows'
+                    }
                 }
             }
         }
-        stage('Assemble') {
+        stage ('Assemble') {
             steps {
                 echo 'Assembling ca2/part1 project...'
-                dir('ca2/part1') {
-                    sh './gradlew clean'
-                    sh './gradlew assemble'
+                script {
+                    if (isUnix()) {
+                        dir ('ca2/part1') {
+                            sh './gradlew clean'
+                            sh './gradlew assemble'
+                        }
+                    } else {
+                        dir ('ca2/part1') {
+                            bat 'gradlew.bat clean'
+                            bat 'gradlew.bat assemble'
+                        }
+                    }
                 }
             }
         }
-        stage('Test') {
+        stage ('Test') {
             steps {
                 echo 'Running tests...'
-                dir('ca2/part1') {
-                    sh './gradlew test'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part1') {
+                            sh './gradlew test'
+                        }
+                    } else {
+                        dir('ca2/part1') {
+                            bat 'gradlew.bat test'
+                        }
+                    }
                 }
             }
             post {
@@ -200,7 +223,7 @@ pipeline {
                 }
             }
         }
-        stage('Archiving') {
+        stage ('Archiving') {
             steps {
                 echo 'Archiving...'
                 archiveArtifacts 'ca2/part1/build/libs/*.jar'
@@ -289,7 +312,7 @@ a `Jenkinsfile` in the same directory as the `Dockerfile` with the following con
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage ('Checkout') {
             steps {
                 echo 'Checking out...'
                 git 'https://github.com/J2PCastro/devops-23-24-PSM-1231836.git'
@@ -298,25 +321,48 @@ pipeline {
         stage('Prepare') {
             steps {
                 echo 'Setting executable permissions for gradlew...'
-                dir('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh 'chmod +x gradlew'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh 'chmod +x gradlew'
+                        }
+                    } else {
+                        echo 'Skipping chmod on Windows'
+                    }
                 }
             }
         }
-        stage('Assemble') {
+        stage ('Assemble') {
             steps {
                 echo 'Assembling ca2/part2/react-and-spring-data-rest-basic project...'
-                dir('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh './gradlew clean'
-                    sh './gradlew assemble'
+                script {
+                    if (isUnix()) {
+                        dir ('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh './gradlew clean'
+                            sh './gradlew assemble'
+                        }
+                    } else {
+                        dir ('ca2/part2/react-and-spring-data-rest-basic') {
+                            bat 'gradlew.bat clean'
+                            bat 'gradlew.bat assemble'
+                        }
+                    }
                 }
             }
         }
-        stage('Test') {
+        stage ('Test') {
             steps {
                 echo 'Running tests...'
-                dir('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh './gradlew test'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh './gradlew test'
+                        }
+                    } else {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            bat 'gradlew.bat test'
+                        }
+                    }
                 }
             }
             post {
@@ -326,22 +372,30 @@ pipeline {
                 }
             }
         }
-        stage('Javadoc') {
+        stage ('Javadoc') {
             steps {
                 echo 'Generating Javadoc...'
-                dir('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh './gradlew javadoc'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh './gradlew javadoc'
+                        }
+                    } else {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            bat 'gradlew.bat javadoc'
+                        }
+                    }
                 }
                 echo 'Archiving and publishing Javadoc...'
-                publishHTML(target: [allowMissing         : false,
+                publishHTML(target: [allowMissing: false,
                                      alwaysLinkToLastBuild: false,
-                                     keepAll              : true,
-                                     reportDir            : '/var/jenkins_home/workspace/ca5_pipeline/ca2/part2/react-and-spring-data-rest-basic/build/docs/javadoc',
-                                     reportFiles          : 'index.html',
-                                     reportName           : 'Javadoc Report'])
+                                     keepAll: true,
+                                     reportDir: '/var/jenkins_home/workspace/ca5_pipeline/ca2/part2/react-and-spring-data-rest-basic/build/docs/javadoc',
+                                     reportFiles: 'index.html',
+                                     reportName: 'Javadoc Report'])
             }
         }
-        stage('Archiving') {
+        stage ('Archiving') {
             steps {
                 echo 'Archiving...'
                 archiveArtifacts 'ca2/part2/react-and-spring-data-rest-basic/build/libs/*.war'
