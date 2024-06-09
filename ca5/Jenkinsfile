@@ -10,25 +10,48 @@ pipeline {
         stage('Prepare') {
             steps {
                 echo 'Setting executable permissions for gradlew...'
-                dir('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh 'chmod +x gradlew'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh 'chmod +x gradlew'
+                        }
+                    } else {
+                        echo 'Skipping chmod on Windows'
+                    }
                 }
             }
         }
         stage ('Assemble') {
             steps {
                 echo 'Assembling ca2/part2/react-and-spring-data-rest-basic project...'
-                dir ('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh './gradlew clean'
-                    sh './gradlew assemble'
+                script {
+                    if (isUnix()) {
+                        dir ('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh './gradlew clean'
+                            sh './gradlew assemble'
+                        }
+                    } else {
+                       dir ('ca2/part2/react-and-spring-data-rest-basic') {
+                            bat 'gradlew.bat clean'
+                            bat 'gradlew.bat assemble'
+                       }
+                    }
                 }
             }
         }
         stage ('Test') {
             steps {
                 echo 'Running tests...'
-                dir ('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh './gradlew test'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh './gradlew test'
+                        }
+                    } else {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            bat 'gradlew.bat test'
+                        }
+                    }
                 }
             }
             post {
@@ -41,8 +64,16 @@ pipeline {
         stage ('Javadoc') {
             steps {
                 echo 'Generating Javadoc...'
-                dir ('ca2/part2/react-and-spring-data-rest-basic') {
-                    sh './gradlew javadoc'
+                script {
+                    if (isUnix()) {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            sh './gradlew javadoc'
+                        }
+                    } else {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
+                            bat 'gradlew.bat javadoc'
+                        }
+                    }
                 }
                 echo 'Archiving and publishing Javadoc...'
                 publishHTML(target: [allowMissing: false,
