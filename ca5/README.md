@@ -36,14 +36,14 @@ this assignment can be found [here](https://github.com/J2PCastro/devops-23-24-PS
 # Table of Contents
 
 - [Setup](#setup)
-  - [Use docker-compose to automate the creation of the two services and network](#use-docker-compose-to-automate-the-creation-of-the-two-services-and-network)
-  - [Access Jenkins](#access-jenkins)
-  - [Plugins](#plugins)
+    - [Use docker-compose to automate the creation of the two services and network](#use-docker-compose-to-automate-the-creation-of-the-two-services-and-network)
+    - [Access Jenkins](#access-jenkins)
+    - [Plugins](#plugins)
 - [Pipelines](#pipelines)
-  - [Pipeline 1](#pipeline-1)
-  - [Pipeline 2](#pipeline-2)
-    - [Docker Hub Credentials](#docker-hub-credentials)
-    - [Running the Pipeline](#running-the-pipeline)
+    - [Pipeline 1](#pipeline-1)
+    - [Pipeline 2](#pipeline-2)
+        - [Docker Hub Credentials](#docker-hub-credentials)
+        - [Running the Pipeline](#running-the-pipeline)
 - [Conclusion](#conclusion)
 
 # Setup
@@ -435,9 +435,9 @@ Now we see some differences in the `Jenkins` interface. We can see the test resu
 the sidebar we can also se a new option that allows us to check the Javadoc generated during the execution of the
 pipeline.
 
-If we navigate to `Docker Hub` we can see the image published there. This is a very useful feature as it allows us to
-easily share and distribute our applications using Docker images. This is especially useful in modern software
-development pipelines where applications are built and deployed using containers.
+If we navigate to `Docker Hub` we can see the image published [here](https://hub.docker.com/u/josepedrocastro). This is
+a very useful feature as it allows us to easily share and distribute our applications using Docker images. This is
+especially useful in modern software development pipelines where applications are built and deployed using containers.
 
 # Conclusion
 
