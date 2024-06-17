@@ -130,6 +130,11 @@ directory where the `Dockerfile` and `docker-compose` files are located:
 docker-compose up -d
 ```
 
+This docker-compose file is an example of how to use `Docker in Docker` with `Jenkins`. For the purpose of this
+assignment, in order to explore and experiment different approaches we will use the instructions provided in the link
+above. This way we can have a better understanding of how to use `Jenkins` with `Docker` and how to create
+a `Dockerfile` to automate the installation of `Jenkins` and the necessary plugins.
+
 ## Access Jenkins
 
 After running the above command, `Jenkins` should be running and accessible at `http://localhost:8080`. To access it
@@ -163,7 +168,7 @@ assignment. Inside this directory, we should create a `Jenkinsfile` with the fol
 pipeline {
     agent any
     stages {
-        stage ('Checkout') {
+        stage('Checkout') {
             steps {
                 echo 'Checking out...'
                 git 'https://github.com/J2PCastro/devops-23-24-PSM-1231836.git'
@@ -183,17 +188,17 @@ pipeline {
                 }
             }
         }
-        stage ('Assemble') {
+        stage('Assemble') {
             steps {
                 echo 'Assembling ca2/part1 project...'
                 script {
                     if (isUnix()) {
-                        dir ('ca2/part1') {
+                        dir('ca2/part1') {
                             sh './gradlew clean'
                             sh './gradlew assemble'
                         }
                     } else {
-                        dir ('ca2/part1') {
+                        dir('ca2/part1') {
                             bat 'gradlew.bat clean'
                             bat 'gradlew.bat assemble'
                         }
@@ -201,7 +206,7 @@ pipeline {
                 }
             }
         }
-        stage ('Test') {
+        stage('Test') {
             steps {
                 echo 'Running tests...'
                 script {
@@ -223,7 +228,7 @@ pipeline {
                 }
             }
         }
-        stage ('Archiving') {
+        stage('Archiving') {
             steps {
                 echo 'Archiving...'
                 archiveArtifacts 'ca2/part1/build/libs/*.jar'
@@ -312,7 +317,7 @@ a `Jenkinsfile` in the same directory as the `Dockerfile` with the following con
 pipeline {
     agent any
     stages {
-        stage ('Checkout') {
+        stage('Checkout') {
             steps {
                 echo 'Checking out...'
                 git 'https://github.com/J2PCastro/devops-23-24-PSM-1231836.git'
@@ -332,17 +337,17 @@ pipeline {
                 }
             }
         }
-        stage ('Assemble') {
+        stage('Assemble') {
             steps {
                 echo 'Assembling ca2/part2/react-and-spring-data-rest-basic project...'
                 script {
                     if (isUnix()) {
-                        dir ('ca2/part2/react-and-spring-data-rest-basic') {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
                             sh './gradlew clean'
                             sh './gradlew assemble'
                         }
                     } else {
-                        dir ('ca2/part2/react-and-spring-data-rest-basic') {
+                        dir('ca2/part2/react-and-spring-data-rest-basic') {
                             bat 'gradlew.bat clean'
                             bat 'gradlew.bat assemble'
                         }
@@ -350,7 +355,7 @@ pipeline {
                 }
             }
         }
-        stage ('Test') {
+        stage('Test') {
             steps {
                 echo 'Running tests...'
                 script {
@@ -372,7 +377,7 @@ pipeline {
                 }
             }
         }
-        stage ('Javadoc') {
+        stage('Javadoc') {
             steps {
                 echo 'Generating Javadoc...'
                 script {
@@ -387,15 +392,15 @@ pipeline {
                     }
                 }
                 echo 'Archiving and publishing Javadoc...'
-                publishHTML(target: [allowMissing: false,
+                publishHTML(target: [allowMissing         : false,
                                      alwaysLinkToLastBuild: false,
-                                     keepAll: true,
-                                     reportDir: '/var/jenkins_home/workspace/ca5_pipeline/ca2/part2/react-and-spring-data-rest-basic/build/docs/javadoc',
-                                     reportFiles: 'index.html',
-                                     reportName: 'Javadoc Report'])
+                                     keepAll              : true,
+                                     reportDir            : '/var/jenkins_home/workspace/ca5_pipeline/ca2/part2/react-and-spring-data-rest-basic/build/docs/javadoc',
+                                     reportFiles          : 'index.html',
+                                     reportName           : 'Javadoc Report'])
             }
         }
-        stage ('Archiving') {
+        stage('Archiving') {
             steps {
                 echo 'Archiving...'
                 archiveArtifacts 'ca2/part2/react-and-spring-data-rest-basic/build/libs/*.war'
